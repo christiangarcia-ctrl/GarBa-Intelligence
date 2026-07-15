@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="GarBa Intelligence: herramientas premium de planeación patrimonial para retiro, control financiero y protección familiar." />
+  <meta name="theme-color" content="#07111f" />
+  <title>GarBa Intelligence | Planeación Patrimonial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="session-pending">
+  <section class="access-gate" id="accessGate" aria-labelledby="accessTitle">
+    <div class="access-gate__visual" aria-hidden="true">
+      <div class="access-constellation">
+        <span class="access-ring access-ring--one"></span>
+        <span class="access-ring access-ring--two"></span>
+        <span class="access-core">GI</span>
+        <span class="access-node access-node--one"></span>
+        <span class="access-node access-node--two"></span>
+        <span class="access-node access-node--three"></span>
+      </div>
+    </div>
+    <div class="access-gate__panel">
+      <a class="access-brand" href="#" aria-label="GarBa Intelligence">
+        <span class="brand-mark">G</span>
+        <span class="brand-copy"><strong>GarBa Intelligence</strong><small>Planeación Patrimonial</small></span>
+      </a>
+      <div class="access-gate__copy">
+        <span class="eyebrow"><i></i> Acceso personal</span>
+        <h1 id="accessTitle">Bienvenido a GarBa Intelligence</h1>
+        <p>Este espacio fue preparado para ayudarte a dar seguimiento a tu estrategia patrimonial y tomar mejores decisiones a lo largo de tu vida.</p>
+      </div>
+      <form class="access-form" id="accessForm">
+        <label>
+          <span>Nombre completo</span>
+          <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Ejemplo: Christian García" required>
+          <small>Así podremos preparar tu experiencia de forma personal.</small>
+        </label>
+        <label>
+          <span>Correo electrónico</span>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="El mismo con el que recibiste el acceso" required>
+          <small>Nos ayuda a identificar tu espacio en este dispositivo.</small>
+        </label>
+        <button class="access-submit" type="submit">Acceder a mi espacio <span>→</span></button>
+      </form>
+      <p class="access-privacy">Tu información permanece únicamente en este dispositivo.</p>
+
+      <div class="access-preparing" id="accessPreparing" aria-live="polite" aria-hidden="true">
+        <div class="access-preparing__pulse"><span></span></div>
+        <p>Preparando tu espacio patrimonial…</p>
+        <small>Personalizando tu experiencia</small>
+      </div>
+    </div>
+  </section>
+
+  <div class="portal-shell" id="portalShell" aria-hidden="true">
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="grid-overlay"></div>
+
+  <header class="site-header" id="inicio">
+    <a class="brand" href="#inicio" aria-label="GarBa Intelligence, inicio">
+      <span class="brand-mark" aria-hidden="true">G</span>
+      <span class="brand-copy">
+        <strong>GarBa Intelligence</strong>
+        <small>Planeación Patrimonial</small>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      <a href="#origen">Origen</a>
+      <a href="#herramientas">Herramientas</a>
+      <a href="#acceso">Tu acceso</a>
+      <a href="#acerca">Acerca de GarBa</a>
+    </nav>
+    <div class="user-menu">
+      <button class="user-menu__trigger" id="userMenuTrigger" type="button" aria-expanded="false" aria-controls="userMenuPanel">
+        <span class="user-avatar" data-user-initial>C</span>
+        <span class="user-menu__copy"><small>Espacio de</small><strong data-user-first-name>Usuario</strong></span>
+        <span class="user-menu__chevron">⌄</span>
+      </button>
+      <div class="user-menu__panel" id="userMenuPanel" hidden>
+        <div class="user-menu__identity"><strong data-user-full-name></strong><span data-user-email></span></div>
+        <button type="button" data-session-action="change">Cambiar de usuario</button>
+        <button type="button" data-session-action="logout">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-shell">
+      <div class="hero-copy reveal">
+        <span class="eyebrow"><i></i> Tu espacio privado de planeación patrimonial</span>
+        <p class="personal-welcome">Bienvenido nuevamente, <strong data-user-first-name>Usuario</strong>.</p>
+        <h1>Tres herramientas.<br><span>Una sola intención:</span><br>ayudarte a tomar mejores decisiones.</h1>
+        <p>
+          <span data-user-first-name>Usuario</span>, este es tu espacio personal para comprender tu situación financiera, proyectar escenarios y convertir información compleja en decisiones claras y accionables.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#herramientas">Conocer las herramientas</a>
+          <a class="button button-secondary" href="#origen">Descubrir por qué existen</a>
+        </div>
+        <div class="trust-row" aria-label="Principios de experiencia">
+          <span>Privado en tu navegador</span>
+          <span>Sin registros innecesarios</span>
+          <span>Diseñado para avanzar a tu ritmo</span>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="Visualización patrimonial">
+        <div class="orbital-card">
+          <div class="orbital-topline">
+            <span>Patrimonio integral</span>
+            <span class="live-pill">Análisis activo</span>
+          </div>
+          <div class="orbital-stage">
+            <div class="orbit orbit-a"></div>
+            <div class="orbit orbit-b"></div>
+            <div class="core">
+              <small>Visión</small>
+              <strong>360°</strong>
+            </div>
+            <div class="metric metric-one"><small>Retiro</small><strong>Proyección</strong></div>
+            <div class="metric metric-two"><small>Flujo</small><strong>Control</strong></div>
+            <div class="metric metric-three"><small>Familia</small><strong>Protección</strong></div>
+          </div>
+          <div class="orbital-footer">
+            <div><small>Decisiones</small><strong>Con contexto</strong></div>
+            <div><small>Escenarios</small><strong>Modificables</strong></div>
+            <div><small>Resultados</small><strong>Descargables</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell origin" id="origen">
+      <div class="section-heading reveal">
+        <span class="eyebrow"><i></i> El origen</span>
+        <h2>Fueron creadas para que una buena decisión no dependa de entender términos complicados.</h2>
+      </div>
+      <div class="origin-grid">
+        <article class="glass-panel reveal">
+          <span class="panel-index">01</span>
+          <h3>Traducir complejidad</h3>
+          <p>Convierten cifras, compromisos y metas en una lectura clara de tu situación actual y de lo que podría ocurrir si mantienes o modificas ciertas decisiones.</p>
+        </article>
+        <article class="glass-panel reveal">
+          <span class="panel-index">02</span>
+          <h3>Dar seguimiento</h3>
+          <p>Tu vida cambia. Estas herramientas están pensadas para actualizarse, comparar momentos y ayudarte a mantener el rumbo sin empezar desde cero.</p>
+        </article>
+        <article class="glass-panel reveal">
+          <span class="panel-index">03</span>
+          <h3>Impulsar acción</h3>
+          <p>No buscan llenarte de datos, sino mostrar prioridades, brechas y oportunidades para que sepas qué atender primero y por qué.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell access-story" id="acceso">
+      <div class="access-card reveal">
+        <div>
+          <span class="eyebrow"><i></i> ¿Cómo llegaron a ti?</span>
+          <h2>Estas herramientas tienen valor porque fueron diseñadas para acompañar decisiones reales.</h2>
+        </div>
+        <div class="access-options">
+          <div class="access-option">
+            <span class="icon">✦</span>
+            <div><h3>Como parte de tu estrategia</h3><p>Pudiste recibirlas al contratar una estrategia patrimonial con GarBa Seguros con Estrategia.</p></div>
+          </div>
+          <div class="access-option">
+            <span class="icon">♡</span>
+            <div><h3>Como un obsequio con intención</h3><p>También pudieron llegar a ti porque alguien cercano quiso compartirte una herramienta útil para tu futuro.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell tools" id="herramientas">
+      <div class="section-heading reveal">
+        <span class="eyebrow"><i></i> Tu centro de inteligencia patrimonial</span>
+        <h2><span data-user-first-name>Usuario</span>, estas son tus herramientas.</h2>
+        <p>Cada experiencia fue preparada para acompañarte de forma independiente y conservar tus avances en este dispositivo.</p>
+      </div>
+
+      <div class="tool-grid">
+        <article class="tool-card tool-retirement reveal">
+          <div class="tool-glow"></div>
+          <div class="tool-number">01</div>
+          <div class="tool-icon"><span></span></div>
+          <div class="tool-content">
+            <span class="tool-kicker">Proyección patrimonial</span>
+            <h3>Mi Ruta de Retiro</h3>
+            <p class="tool-subtitle">Ya tengo mi plan, ¿ahora qué sigue?</p>
+            <p>Integra retiro, AFORE, ahorro, vivienda, hipoteca e ingresos para conocer tu avance y probar decisiones futuras.</p>
+            <ul>
+              <li>Fotografía patrimonial actual</li>
+              <li>Brecha e ingreso estimado</li>
+              <li>Escenarios y recomendaciones</li>
+            </ul>
+          </div>
+          <a class="tool-button" href="mi-ruta-de-retiro/">Abrir Mi Ruta de Retiro <span>→</span></a>
+        </article>
+
+        <article class="tool-card tool-control reveal">
+          <div class="tool-glow"></div>
+          <div class="tool-number">02</div>
+          <div class="tool-icon"><span></span></div>
+          <div class="tool-content">
+            <span class="tool-kicker">Flujo y decisiones</span>
+            <h3>Control Financiero Mensual</h3>
+            <p class="tool-subtitle">Entiende a dónde va tu dinero.</p>
+            <p>Organiza ingresos, gastos, deuda, ahorro y compromisos para descubrir tu capacidad real y construir un plan mensual.</p>
+            <ul>
+              <li>Distribución del flujo</li>
+              <li>Puntos de fuga y endeudamiento</li>
+              <li>Plan mensual editable</li>
+            </ul>
+          </div>
+          <a class="tool-button" href="control-financiero-mensual/">Abrir Control Financiero <span>→</span></a>
+        </article>
+
+        <article class="tool-card tool-protection reveal">
+          <div class="tool-glow"></div>
+          <div class="tool-number">03</div>
+          <div class="tool-icon"><span></span></div>
+          <div class="tool-content">
+            <span class="tool-kicker">Prevención familiar</span>
+            <h3>Radar de Protección Familiar</h3>
+            <p class="tool-subtitle">Identifica lo que hoy podría dejarte vulnerable.</p>
+            <p>Evalúa fondo de emergencia, seguros, ingresos, vivienda, educación, deudas y organización patrimonial.</p>
+            <ul>
+              <li>Radar por categorías</li>
+              <li>Riesgos y prioridades</li>
+              <li>Plan de acción personalizado</li>
+            </ul>
+          </div>
+          <a class="tool-button" href="radar-proteccion-familiar/">Abrir Radar de Protección <span>→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell principles">
+      <div class="principles-grid reveal">
+        <div><strong>01</strong><span>Información clara</span><p>Sin tecnicismos innecesarios.</p></div>
+        <div><strong>02</strong><span>Escenarios modificables</span><p>Para explorar antes de decidir.</p></div>
+        <div><strong>03</strong><span>Control del usuario</span><p>Tus datos permanecen en tu navegador.</p></div>
+        <div><strong>04</strong><span>Resultados accionables</span><p>Lectura, prioridades y siguientes pasos.</p></div>
+      </div>
+    </section>
+
+    <section class="section-shell about" id="acerca">
+      <div class="about-card reveal">
+        <div class="about-identity">
+          <div class="portrait-placeholder">CG</div>
+          <div>
+            <span class="eyebrow"><i></i> Acompañamiento profesional</span>
+            <h2>Christian García</h2>
+            <p>Asesor patrimonial · GarBa Seguros con Estrategia</p>
+          </div>
+        </div>
+        <div class="about-copy">
+          <blockquote>“No vendo miedo; acompaño decisiones con estrategia.”</blockquote>
+          <p>GarBa Intelligence fue creado para que cada persona pueda entender mejor su realidad, conversar con mayor claridad sobre su futuro y tomar decisiones patrimoniales con mayor intención.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell disclaimer">
+      <div class="disclaimer-card reveal">
+        <span>Información importante</span>
+        <p>Estas herramientas tienen fines informativos y de orientación. Sus resultados dependen de los datos y supuestos capturados, no constituyen una promesa de rendimiento ni sustituyen asesoría financiera, fiscal, legal, médica o de seguros personalizada.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><strong>GarBa Intelligence</strong><span>Planeación Patrimonial</span></div>
+    <p>GarBa Seguros con Estrategia · Christian García</p>
+    <p>© <span id="year"></span> Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  </div>
+</body>
+</html>
