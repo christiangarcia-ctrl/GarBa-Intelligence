@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1c0f14" />
+  <meta name="description" content="Control Financiero Mensual, una experiencia privada de GarBa Intelligence." />
+  <title>Control Financiero Mensual | GarBa Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/control.css" />
+</head>
+<body class="control-app">
+  <div class="control-ambient control-ambient-a"></div>
+  <div class="control-ambient control-ambient-b"></div>
+  <div class="control-grid"></div>
+
+  <header class="control-header">
+    <a class="control-brand" href="../" aria-label="Volver a GarBa Intelligence">
+      <span class="control-brand__mark">G</span>
+      <span><strong>GarBa Intelligence</strong><small>Control Financiero Mensual</small></span>
+    </a>
+    <div class="control-header__actions">
+      <button class="quiet-button" type="button" data-open-panel="guide">Guía</button>
+      <button class="quiet-button" type="button" data-open-panel="privacy">Privacidad</button>
+      <button class="user-menu-button" type="button" data-open-panel="manageData" aria-label="Administrar mi información">
+        <span class="user-menu-button__avatar" data-user-initial>C</span>
+        <span><small>Hola,</small><strong data-user-first-name>Usuario</strong></span>
+        <i>⌄</i>
+      </button>
+    </div>
+  </header>
+
+  <main class="control-main">
+    <section class="flow-shell" id="flowShell">
+      <aside class="flow-sidebar">
+        <div>
+          <span class="flow-eyebrow">Mes de <strong data-user-first-name>Usuario</strong></span>
+          <h1>Control Financiero Mensual</h1>
+          <p>Entiende a dónde va tu dinero: ingresos, gastos fijos, gastos hormiga, deudas y tu capacidad real de ahorro.</p>
+        </div>
+
+        <div class="path-visual" aria-hidden="true">
+          <div class="path-line"><span id="routeLine"></span></div>
+          <div class="path-node is-active" data-route-node="0"><i></i><span>Inicio</span></div>
+          <div class="path-node" data-route-node="1"><i></i><span>Perspectiva</span></div>
+          <div class="path-node" data-route-node="2"><i></i><span>Ingresos y gastos</span></div>
+          <div class="path-node" data-route-node="3"><i></i><span>Hormiga y deudas</span></div>
+          <div class="path-node" data-route-node="4"><i></i><span>Ahorro</span></div>
+          <div class="path-node" data-route-node="5"><i></i><span>Resultado</span></div>
+        </div>
+
+        <div class="save-status" id="saveStatus"><span></span> Tus avances se guardan en este dispositivo.</div>
+        <button class="manage-data-button" type="button" data-open-panel="manageData">Administrar mi información <span>→</span></button>
+      </aside>
+
+      <section class="flow-stage">
+        <div class="progress-top">
+          <div><span id="stepLabel">Bienvenida</span><strong id="progressText">0%</strong></div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+        </div>
+
+        <div class="step is-active" data-step="0">
+          <div class="intro-orbit" aria-hidden="true"><span></span><i></i><b></b></div>
+          <span class="step-kicker">Tiempo estimado: 5 a 6 minutos</span>
+          <h2>Hola, <span data-user-first-name>Usuario</span>.</h2>
+          <p class="step-lead">Vas a registrar ingresos y gastos de un mes típico. No necesitas cifras exactas: los aproximados están bien. Al final vas a ver tu distribución y podrás descargar tu Excel de seguimiento.</p>
+          <div class="promise-grid">
+            <div><strong>Lo que vamos a organizar</strong><span>Ingresos, gastos fijos, gastos pequeños frecuentes, deudas y ahorro.</span></div>
+            <div><strong>Lo que vas a descubrir</strong><span>Cuánto representan esos gastos pequeños al mes y al año, sin juicios.</span></div>
+            <div><strong>Lo que te llevas</strong><span>Un reporte y una plantilla de Excel para dar seguimiento mes a mes.</span></div>
+          </div>
+          <div class="step-actions"><button class="primary-action" type="button" data-next>Comenzar <span>→</span></button></div>
+          <p class="legal-inline">Esta experiencia ofrece estimaciones orientativas y no sustituye una asesoría personalizada.</p>
+        </div>
+
+        <div class="step" data-step="1">
+          <span class="step-kicker">Primero, definamos la perspectiva</span>
+          <h2>¿Cómo quieres revisar tu situación?</h2>
+          <p class="step-lead">Esto nos ayuda a interpretar correctamente tus ingresos y gastos.</p>
+          <div class="choice-grid" data-choice-group="scope">
+            <button class="choice-card" type="button" data-value="individual"><span>Solo mi información</span><small>Una lectura personal de tus ingresos y gastos.</small></button>
+            <button class="choice-card" type="button" data-value="couple"><span>Mi pareja y yo</span><small>Revisaremos el panorama conjunto.</small></button>
+            <button class="choice-card" type="button" data-value="household"><span>Mi hogar en conjunto</span><small>Usaremos cifras familiares.</small></button>
+          </div>
+          <div class="help-note"><button type="button" data-open-panel="scopeHelp">ⓘ ¿Por qué importa esta elección?</button></div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="2">
+          <span class="step-kicker">Antes de los números</span>
+          <h2>Dos preguntas rápidas.</h2>
+          <p class="step-lead">No hay respuestas buenas o malas. Solo nos ayudan a comparar tu percepción con lo que encontremos más adelante.</p>
+          <p class="step-lead" style="margin-top:-18px;font-weight:700;color:#f3dde0">¿Sientes que tu dinero te alcanza cómodamente cada mes?</p>
+          <div class="choice-grid compact" data-choice-group="comfort">
+            <button class="choice-card" type="button" data-value="easy"><span>Sí, cómodamente</span></button>
+            <button class="choice-card" type="button" data-value="sometimes"><span>A veces, con ajustes</span></button>
+            <button class="choice-card" type="button" data-value="hard"><span>No, batallo para llegar a fin de mes</span></button>
+          </div>
+          <p class="step-lead" style="font-weight:700;color:#f3dde0">¿Sabes exactamente en qué se te va tu dinero?</p>
+          <div class="choice-grid compact" data-choice-group="clarity">
+            <button class="choice-card" type="button" data-value="clear"><span>Sí, tengo claridad</span></button>
+            <button class="choice-card" type="button" data-value="partial"><span>Más o menos</span></button>
+            <button class="choice-card" type="button" data-value="unclear"><span>No, se me va sin darme cuenta</span></button>
+          </div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="3">
+          <span class="step-kicker">Tus ingresos</span>
+          <h2>Empecemos por lo que entra cada mes.</h2>
+          <div class="field-grid two-columns">
+            <label class="field-card"><span id="incomeLabel">Tu ingreso mensual</span><div class="money-input"><b>$</b><input type="number" inputmode="decimal" min="0" id="monthlyIncome" placeholder="25,000"></div><small>Usa un promedio si cambia cada mes.</small></label>
+            <label class="field-card"><span>Ingreso extra o variable</span><div class="money-input"><b>$</b><input type="number" inputmode="decimal" min="0" id="extraIncome" placeholder="0"></div><small>Bonos, comisiones u otros ingresos ocasionales.</small></label>
+          </div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="4">
+          <span class="step-kicker">Tus gastos fijos</span>
+          <h2>Lo que necesitas cubrir cada mes.</h2>
+          <p class="step-lead">Vivienda, servicios, transporte y otros compromisos que no cambian mucho de un mes a otro.</p>
+          <div class="field-grid two-columns">
+            <label class="field-card"><span>Vivienda o renta</span><div class="money-input"><b>$</b><input type="number" inputmode="decimal" min="0" id="housingPayment" placeholder="6,000"></div><small>Renta o pago de hipoteca.</small></label>
+            <label class="field-card"><span>Servicios</span><div class="money-input"><b>$</b><input type="number" inputmode="decimal" min="0" id="utilitiesPayment" placeholder="1,500"></div><small>Luz, agua, internet, gas.</small></label>
+            <label class="field-card"><span>Transporte fijo</span><div class="money-input"><b>$</b><input type="number" inputmode="decimal" min="0" id="transportFixed" placeholder="1,200"></div><small>Gasolina, transporte público, mensualidad de auto.</small></label>
+            <label class="field-card"><span>Seguros</span><div class="money-input"><b>$</b><input type="number" inputmode="decimal" min="0" id="insurancePayment" placeholder="800"></div><small>Auto, gastos médicos, vida.</small></label>
+            <label class="field-card"><span>Colegiaturas</span><div class="money-input"><b>$</b><input type="number" inputmode="decimal" min="0" id="tuitionPayment" placeholder="0"></div><small>Déjalo en cero si no aplica.</small></label>
+            <label class="field-card"><span>Otro gasto fijo</span><div class="money-input"><b>$</b><input type="number" inputmode="decimal" min="0" id="otherFixedPayment" placeholder="0"></div><small>Cualquier otro compromiso recurrente.</small></label>
+          </div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="5">
+          <span class="step-kicker">Gastos pequeños y frecuentes</span>
+          <h2>Esto es lo que representa hoy.</h2>
+          <p class="step-lead">No son instrucciones de recorte, solo una fotografía. Elige la frecuencia que más se parezca a tu semana y un costo promedio por ocasión.</p>
+          <div class="field-grid" style="gap:12px">
+            <div class="hormiga-card">
+              <strong>Café o bebidas fuera de casa</strong>
+              <div class="hormiga-fields">
+                <select id="hCoffeeFreq"><option value="">No aplica</option><option value="daily">Todos los días</option><option value="weekday">Entre semana</option><option value="weekend">Fines de semana</option><option value="occasional">De vez en cuando</option></select>
+                <div class="money-input"><b>$</b><input type="number" min="0" id="hCoffeeCost" placeholder="45"></div>
+              </div>
+            </div>
+            <div class="hormiga-card">
+              <strong>Comida rápida o para llevar</strong>
+              <div class="hormiga-fields">
+                <select id="hFoodFreq"><option value="">No aplica</option><option value="daily">Todos los días</option><option value="weekday">Entre semana</option><option value="weekend">Fines de semana</option><option value="occasional">De vez en cuando</option></select>
+                <div class="money-input"><b>$</b><input type="number" min="0" id="hFoodCost" placeholder="120"></div>
+              </div>
+            </div>
+            <div class="hormiga-card">
+              <strong>Apps de transporte (Uber/Didi)</strong>
+              <div class="hormiga-fields">
+                <select id="hAppsFreq"><option value="">No aplica</option><option value="daily">Todos los días</option><option value="weekday">Entre semana</option><option value="weekend">Fines de semana</option><option value="occasional">De vez en cuando</option></select>
+                <div class="money-input"><b>$</b><input type="number" min="0" id="hAppsCost" placeholder="80"></div>
+              </div>
+            </div>
+            <div class="hormiga-card">
+              <strong>Antojos y conveniencia</strong>
+              <div class="hormiga-fields">
+                <select id="hTreatsFreq"><option value="">No aplica</option><option value="daily">Todos los días</option><option value="weekday">Entre semana</option><option value="weekend">Fines de semana</option><option value="occasional">De vez en cuando</option></select>
+                <div class="money-input"><b>$</b><input type="number" min="0" id="hTreatsCost" placeholder="60"></div>
+              </div>
+            </div>
+            <div class="hormiga-card">
+              <strong>Cigarros o vapeo</strong>
+              <div class="hormiga-fields">
+                <select id="hSmokesFreq"><option value="">No aplica</option><option value="daily">Todos los días</option><option value="weekday">Entre semana</option><option value="weekend">Fines de semana</option><option value="occasional">De vez en cuando</option></select>
+                <div class="money-input"><b>$</b><input type="number" min="0" id="hSmokesCost" placeholder="50"></div>
+              </div>
+            </div>
+            <div class="hormiga-card">
+              <strong>Otro gasto pequeño frecuente</strong>
+              <div class="hormiga-fields">
+                <select id="hOtherFreq"><option value="">No aplica</option><option value="daily">Todos los días</option><option value="weekday">Entre semana</option><option value="weekend">Fines de semana</option><option value="occasional">De vez en cuando</option></select>
+                <div class="money-input"><b>$</b><input type="number" min="0" id="hOtherCost" placeholder="0"></div>
+              </div>
+            </div>
+            <label class="field-card"><span>Suscripciones y streaming</span><div class="money-input"><b>$</b><input type="number" min="0" id="hSubs" placeholder="250"></div><small>Suma mensual de todas tus suscripciones.</small></label>
+          </div>
+          <div class="help-note"><button type="button" data-open-panel="hormigaHelp">ⓘ ¿Por qué preguntamos esto así?</button></div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="6">
+          <span class="step-kicker">Tus deudas</span>
+          <h2>¿Usas tarjeta de crédito hoy?</h2>
+          <div class="choice-grid compact" data-choice-group="hasCreditCard">
+            <button class="choice-card" type="button" data-value="yes"><span>Sí, la uso</span></button>
+            <button class="choice-card" type="button" data-value="no"><span>No, no tengo</span></button>
+          </div>
+          <div class="conditional-block" id="creditCardFields" hidden>
+            <div class="field-grid two-columns">
+              <label class="field-card"><span>Pago mínimo</span><div class="money-input"><b>$</b><input type="number" min="0" id="creditCardMin" placeholder="900"></div><small>El mínimo que exige tu estado de cuenta.</small></label>
+              <label class="field-card"><span>Lo que realmente pagas al mes</span><div class="money-input"><b>$</b><input type="number" min="0" id="creditCardActual" placeholder="2,500"></div><small>Puede ser igual o mayor al mínimo.</small></label>
+            </div>
+          </div>
+          <div class="field-grid two-columns" style="margin-top:14px">
+            <label class="field-card"><span>Otros créditos</span><div class="money-input"><b>$</b><input type="number" min="0" id="otherDebtPayment" placeholder="0"></div><small>Auto, personal, u otro pago mensual de deuda.</small></label>
+          </div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="7">
+          <span class="step-kicker">Tu ahorro actual</span>
+          <h2>¿Cuánto separas hoy al mes?</h2>
+          <p class="step-lead">No necesitas una cifra perfecta. Si hoy es cero, también es información válida.</p>
+          <div class="field-grid two-columns">
+            <label class="field-card field-card--highlight"><span>Ahorro mensual actual</span><div class="money-input"><b>$</b><input type="number" min="0" id="currentSavings" placeholder="1,000"></div><small>Lo que apartas hoy, sin contar deuda.</small></label>
+          </div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Revisar mis datos <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="8">
+          <span class="step-kicker">Antes de calcular</span>
+          <h2>Así construiremos tu primera lectura.</h2>
+          <div class="review-grid" id="reviewGrid"></div>
+          <div class="review-note" id="reviewNote"></div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>Corregir información</button><button class="primary-action" type="button" id="calculateButton">Ver mi resultado <span>→</span></button></div>
+        </div>
+
+        <div class="step results-step" data-step="9">
+          <div class="analysis-sequence" id="analysisSequence">
+            <div class="analysis-copy">
+              <span class="step-kicker">Construyendo tu lectura</span>
+              <h2>Estamos conectando las piezas de tu mes.</h2>
+              <p id="analysisText">Organizando tus ingresos y gastos…</p>
+              <div class="analysis-steps" aria-hidden="true">
+                <div class="analysis-step is-active"><i></i><span>Organizando ingresos y gastos</span></div>
+                <div class="analysis-step"><i></i><span>Calculando gastos hormiga</span></div>
+                <div class="analysis-step"><i></i><span>Comparando contra una referencia sana</span></div>
+                <div class="analysis-step"><i></i><span>Preparando tu lectura</span></div>
+              </div>
+            </div>
+            <div class="flow-processing" aria-hidden="true">
+              <div class="flow-horizon"></div>
+              <svg class="flow-path" viewBox="0 0 560 420" role="img" aria-label="El flujo de tu dinero se organiza">
+                <path class="flow-path-base" d="M275 402 C145 340 412 304 278 244 C154 188 414 158 282 104 C228 82 254 50 280 22"/>
+                <path class="flow-path-glow" d="M275 402 C145 340 412 304 278 244 C154 188 414 158 282 104 C228 82 254 50 280 22"/>
+              </svg>
+              <div class="flow-core"></div>
+              <div class="resource-orbit resource-orbit--income"><span>Ingreso</span></div>
+              <div class="resource-orbit resource-orbit--fixed"><span>Fijos</span></div>
+              <div class="resource-orbit resource-orbit--hormiga"><span>Hormiga</span></div>
+              <div class="resource-orbit resource-orbit--savings"><span>Ahorro</span></div>
+            </div>
+          </div>
+
+          <div class="results-content" id="resultsContent" hidden>
+            <span class="step-kicker">Tu lectura está lista</span>
+            <h2><span data-user-first-name>Usuario</span>, así va hoy tu Control Financiero.</h2>
+
+            <section class="flow-headline">
+              <div>
+                <span class="flow-headline__eyebrow">Respuesta principal</span>
+                <h3 id="flowStatusTitle">Tu flujo está en construcción.</h3>
+                <p id="flowStatusText">Estamos preparando una lectura clara de tu mes.</p>
+              </div>
+              <div class="flow-headline__badge">
+                <strong id="capacityBadge">$0</strong>
+                <span>capacidad real de ahorro</span>
+              </div>
+            </section>
+
+            <div class="flow-summary-grid">
+              <section class="flow-summary-card"><span>Ingreso total</span><strong id="flowIncomeTotal">$0</strong><small>Incluye ingresos variables declarados.</small></section>
+              <section class="flow-summary-card flow-summary-card--accent"><span>Gastos fijos</span><strong id="flowFixedTotal">$0</strong><small>Vivienda, servicios, transporte y más.</small></section>
+              <section class="flow-summary-card"><span>Capacidad real de ahorro</span><strong id="flowCapacityTop">$0</strong><small>Después de fijos, hormiga y deudas.</small></section>
+            </div>
+
+            <div class="wow-flow">
+              <div class="flow-ring" id="flowRing"><span><small>Ingreso total</small><strong id="flowRingTotal">$0</strong></span></div>
+              <div class="flow-breakdown" id="flowBreakdown"></div>
+            </div>
+
+            <section class="result-reveal">
+              <span class="result-label">Lo que podrías estar liberando cada mes</span>
+              <strong class="hero-result" id="capacityHero">$0</strong>
+              <p>Es una referencia, no una obligación. Puedes explorar qué hacer con este margen.</p>
+            </section>
+
+            <section class="discovery-card" id="benchmarkCard">
+              <span>Referencia de contexto</span>
+              <h3>Tu distribución vs. una referencia común (50/30/20)</h3>
+              <p>Necesidades: <strong id="benchFixed">0%</strong> de tu ingreso (referencia: 50%). Gastos hormiga: <strong id="benchHormiga">0%</strong> (forman parte del 30% de "deseos"). Deudas + ahorro: <strong id="benchDebtSavings">0%</strong> (referencia: 20%). No es una regla que debas cumplir, solo un punto de comparación.</p>
+            </section>
+
+            <section class="discovery-card">
+              <span>Qué significa para ti</span>
+              <h3 id="discoveryTitle">Ya tienes una fotografía clara de tu mes.</h3>
+              <p id="discoveryText"></p>
+            </section>
+
+            <section class="method-summary">
+              <div><span class="step-kicker">Cómo se distribuye tu mes</span><h3>Un espejo de tu flujo actual.</h3><p>No es una calificación; es información para decidir con calma.</p></div>
+              <div class="method-summary__grid">
+                <div><span>Necesidades</span><strong id="methodFixedResult">$0</strong><small>Gastos fijos del mes.</small></div>
+                <div><span>Gastos hormiga</span><strong id="methodHormigaResult">$0</strong><small>Pequeños gastos frecuentes.</small></div>
+                <div><span>Deudas</span><strong id="methodDebtResult">$0</strong><small>Tarjeta y otros créditos.</small></div>
+                <div><span>Ahorro declarado</span><strong id="methodSavingsResult">$0</strong><small>Lo que hoy separas cada mes.</small></div>
+              </div>
+            </section>
+
+            <section class="recommendations-section">
+              <div><span class="step-kicker">Oportunidades</span><h3>Tus principales puntos de fuga.</h3><p>No son instrucciones. Son datos para que decidas qué ajustar, si quieres.</p></div>
+              <div class="recommendation-list" id="recommendationList"></div>
+            </section>
+
+            <section class="simulator-section" id="simulatorSection" hidden>
+              <div class="section-title-row"><div><span class="step-kicker">Explora una decisión</span><h3>¿Qué pasaría si reduces <span id="simulatorLabel">este gasto</span>?</h3></div></div>
+              <label class="slider-label"><span>Reducción</span><strong id="scenarioReductionLabel">0%</strong></label>
+              <input type="range" id="scenarioReduction" min="0" max="100" step="10" value="0">
+              <div class="scenario-comparison">
+                <div><span>Se liberaría al mes</span><strong id="scenarioFreedMonthly">$0</strong></div>
+                <div class="scenario-highlight"><span>Al año</span><strong id="scenarioFreedAnnual">$0</strong></div>
+              </div>
+              <div class="scenario-secondary">
+                <span class="step-kicker">Nueva capacidad de ahorro estimada</span>
+                <strong id="scenarioNewCapacity" style="display:block;margin-top:8px;font:800 22px Manrope">$0</strong>
+              </div>
+            </section>
+
+            <section class="next-actions">
+              <div><span class="step-kicker">Tus siguientes pasos</span><h3>Una lectura útil siempre termina con una acción clara.</h3></div>
+              <div class="action-list">
+                <div class="action-item"><span>Esta semana</span><strong>Elige un gasto hormiga y decide, con calma, si quieres ajustarlo.</strong></div>
+                <div class="action-item"><span>Este mes</span><strong>Define a dónde iría tu capacidad real de ahorro si decides moverla.</strong></div>
+                <div class="action-item"><span>Próximo mes</span><strong>Vuelve y registra un nuevo mes para ver tu tendencia.</strong></div>
+              </div>
+            </section>
+
+            <section class="flow-closing">
+              <span class="step-kicker">Esto seguirá evolucionando contigo</span>
+              <h3>No hay fracaso, solo información para reajustar.</h3>
+              <p>Si un mes gastaste más de lo que esperabas, no es un error: es una señal de que tus prioridades ese mes fueron distintas.</p>
+              <p>Vuelve cada mes para ver tu tendencia real, no solo una fotografía aislada.</p>
+            </section>
+
+            <section class="download-section">
+              <div><span class="step-kicker">Tu información es tuya</span><h3>Llévate tus resultados.</h3><p>Descarga tus datos, tu plantilla de Excel de seguimiento anual, o guarda este reporte como PDF.</p></div>
+              <div class="download-actions">
+                <button class="secondary-action" type="button" id="downloadCsv">Descargar mis datos</button>
+                <button class="secondary-action" type="button" id="downloadExcel">Descargar Excel</button>
+                <button class="primary-action" type="button" id="printReport">Guardar reporte en PDF</button>
+              </div>
+            </section>
+
+            <p class="legal-inline">Las cifras usan supuestos simples a partir de tus respuestas y no representan una garantía ni sustituyen asesoría personalizada.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <a class="whatsapp-float" id="whatsappLink" href="https://wa.me/526623072573" target="_blank" rel="noopener"><span>◔</span><div><small>Estoy a un mensaje de distancia</small><strong>Revisar mi Control con Christian</strong></div></a>
+
+  <div class="side-panel" id="sidePanel" hidden>
+    <button class="side-panel__backdrop" type="button" data-close-panel aria-label="Cerrar"></button>
+    <aside class="side-panel__content" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+      <button class="side-panel__close" type="button" data-close-panel>×</button>
+      <span class="step-kicker" id="panelKicker">Información</span>
+      <h2 id="panelTitle">Ayuda</h2>
+      <div id="panelBody"></div>
+    </aside>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="../assets/js/session.js"></script>
+  <script src="../assets/js/control.js"></script>
+</body>
+</html>
