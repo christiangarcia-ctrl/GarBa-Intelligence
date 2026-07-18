@@ -3,31 +3,364 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#07111f" />
+  <meta name="theme-color" content="#120b1f" />
+  <meta name="description" content="Radar de Protección Familiar, una experiencia privada de GarBa Intelligence." />
   <title>Radar de Protección Familiar | GarBa Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/styles.css" />
-  <style>
-    .tool-intro-page{min-height:100vh;display:grid;place-items:center;padding:110px 16px 60px}.tool-intro-shell{width:min(760px,100%);padding:42px;border:1px solid rgba(255,255,255,.1);border-radius:30px;background:linear-gradient(155deg,rgba(18,35,57,.84),rgba(7,16,28,.96));box-shadow:var(--shadow)}.tool-intro-shell h1{font:800 clamp(42px,7vw,70px)/1 Manrope;letter-spacing:-.05em;margin:18px 0 10px}.tool-intro-shell h2{font:600 20px Manrope;color:#cfe4f2;margin:0 0 24px}.tool-intro-shell p{color:var(--muted);line-height:1.75}.status-box{margin:28px 0;padding:18px;border-radius:16px;border:1px solid rgba(91,185,255,.15);background:rgba(91,185,255,.045);color:#bcd8ea;font-size:13px;line-height:1.6}.tool-intro-actions{display:flex;gap:12px;flex-wrap:wrap}.tool-intro-actions a{min-height:48px;padding:0 18px;display:inline-flex;align-items:center;border-radius:14px;font-size:12px;font-weight:700}.back{border:1px solid rgba(255,255,255,.12)}.inactive{background:rgba(255,255,255,.06);color:#7f93a7;cursor:default}@media(max-width:600px){.tool-intro-shell{padding:28px}}
-  </style>
+  <link rel="stylesheet" href="../assets/css/protection.css" />
 </head>
-<body>
-  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div><div class="grid-overlay"></div>
-  <main class="tool-intro-page">
-    <section class="tool-intro-shell reveal visible">
-      <span class="eyebrow"><i></i> Espacio personal de <span data-user-first-name>Usuario</span></span>
-      <h1>Radar de Protección Familiar</h1>
-      <h2>Identifica lo que hoy podría dejarte vulnerable.</h2>
-      <p>Esta herramienta tendrá su propia experiencia paso a paso, almacenamiento temporal en el navegador, lectura personalizada y descargas de resultados.</p>
-      <div class="status-box">El portal central ya está listo. Esta sección queda separada técnicamente para desarrollarse como una herramienta independiente, sin depender de las otras dos.</div>
-      <div class="tool-intro-actions">
-        <a class="back" href="../">← Volver al portal</a>
-        <a class="inactive" href="#" aria-disabled="true">Módulo en construcción</a>
-      </div>
+<body class="protection-app">
+  <div class="protection-ambient protection-ambient-a"></div>
+  <div class="protection-ambient protection-ambient-b"></div>
+  <div class="protection-grid"></div>
+
+  <header class="protection-header">
+    <a class="protection-brand" href="../" aria-label="Volver a GarBa Intelligence">
+      <span class="protection-brand__mark">G</span>
+      <span><strong>GarBa Intelligence</strong><small>Radar de Protección Familiar</small></span>
+    </a>
+    <div class="protection-header__actions">
+      <button class="quiet-button" type="button" data-open-panel="guide">Guía</button>
+      <button class="quiet-button" type="button" data-open-panel="privacy">Privacidad</button>
+      <button class="user-menu-button" type="button" data-open-panel="manageData" aria-label="Administrar mi información">
+        <span class="user-menu-button__avatar" data-user-initial>C</span>
+        <span><small>Hola,</small><strong data-user-first-name>Usuario</strong></span>
+        <i>⌄</i>
+      </button>
+    </div>
+  </header>
+
+  <main class="protection-main">
+    <section class="radar-shell" id="radarShell">
+      <aside class="radar-sidebar">
+        <div>
+          <span class="radar-eyebrow">Radar personal de <strong data-user-first-name>Usuario</strong></span>
+          <h1>Radar de Protección Familiar</h1>
+          <p>Identifica lo que hoy podría dejarte vulnerable, en 7 áreas clave de tu vida y tu patrimonio.</p>
+        </div>
+
+        <div class="path-visual" aria-hidden="true">
+          <div class="path-line"><span id="routeLine"></span></div>
+          <div class="path-node is-active" data-route-node="0"><i></i><span>Inicio</span></div>
+          <div class="path-node" data-route-node="1"><i></i><span>Perspectiva</span></div>
+          <div class="path-node" data-route-node="2"><i></i><span>Protección financiera</span></div>
+          <div class="path-node" data-route-node="3"><i></i><span>Familia y vivienda</span></div>
+          <div class="path-node" data-route-node="4"><i></i><span>Organización</span></div>
+          <div class="path-node" data-route-node="5"><i></i><span>Resultado</span></div>
+        </div>
+
+        <div class="save-status" id="saveStatus"><span></span> Tus avances se guardan en este dispositivo.</div>
+        <button class="manage-data-button" type="button" data-open-panel="manageData">Administrar mi información <span>→</span></button>
+      </aside>
+
+      <section class="radar-stage">
+        <div class="progress-top">
+          <div><span id="stepLabel">Bienvenida</span><strong id="progressText">0%</strong></div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+        </div>
+
+        <div class="step is-active" data-step="0">
+          <div class="intro-orbit" aria-hidden="true"><span></span><i></i><b></b></div>
+          <span class="step-kicker">Tiempo estimado: 6 a 7 minutos</span>
+          <h2>Hola, <span data-user-first-name>Usuario</span>.</h2>
+          <p class="step-lead">Vamos a revisar 7 áreas de tu protección familiar: fondo de emergencia, seguros, ingresos, vivienda, educación, deudas y organización patrimonial. No necesitas cifras exactas, los aproximados están bien.</p>
+
+          <div class="advisor-card">
+            <div class="advisor-card__avatar">CG</div>
+            <div class="advisor-card__body">
+              <span class="advisor-card__label">Quién te acompaña en esta herramienta</span>
+              <strong class="advisor-card__name">Christian García</strong>
+              <span class="advisor-card__role">Asesor patrimonial · GarBa Consultoría Patrimonial</span>
+              <div class="advisor-card__badges">
+                <span class="advisor-card__badge">Cédula CNSF G384982</span>
+                <span class="advisor-card__badge">Planeación patrimonial</span>
+              </div>
+              <div class="advisor-card__contact">
+                <a href="tel:+526623072573">+52 662 307 2573</a>
+                <a href="mailto:christian.garcia@sfgarba.com.mx">christian.garcia@sfgarba.com.mx</a>
+              </div>
+              <a class="advisor-card__link" href="https://www.linkedin.com/in/christian-garcia-barragan" target="_blank" rel="noopener">Conoce quién te está asesorando →</a>
+            </div>
+          </div>
+
+          <div class="promise-grid">
+            <div><strong>Lo que vamos a revisar</strong><span>7 áreas: emergencia, seguros, ingresos, vivienda, educación, deudas y patrimonio.</span></div>
+            <div><strong>Lo que vas a descubrir</strong><span>Un radar visual con tu puntaje por área y tus puntos ciegos.</span></div>
+            <div><strong>Lo que te llevas</strong><span>Un plan de acción priorizado y un reporte descargable.</span></div>
+          </div>
+          <div class="step-actions"><button class="primary-action" type="button" data-next>Comenzar <span>→</span></button></div>
+          <p class="legal-inline">Esta experiencia ofrece estimaciones orientativas y no sustituye una asesoría personalizada.</p>
+        </div>
+
+        <div class="step" data-step="1">
+          <span class="step-kicker">Primero, definamos la perspectiva</span>
+          <h2>¿Cómo quieres revisar tu situación?</h2>
+          <p class="step-lead">Esto nos ayuda a interpretar correctamente tus respuestas.</p>
+          <div class="choice-grid" data-choice-group="scope">
+            <button class="choice-card" type="button" data-value="individual"><span>Solo mi información</span><small>Una lectura personal de tu protección.</small></button>
+            <button class="choice-card" type="button" data-value="couple"><span>Mi pareja y yo</span><small>Revisaremos el panorama conjunto.</small></button>
+            <button class="choice-card" type="button" data-value="household"><span>Mi hogar en conjunto</span><small>Usaremos cifras familiares.</small></button>
+          </div>
+          <div class="help-note"><button type="button" data-open-panel="scopeHelp">ⓘ ¿Por qué importa esta elección?</button></div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="2">
+          <span class="step-kicker">Fondo de emergencia</span>
+          <h2>¿Cuánto tienes disponible ante un imprevisto?</h2>
+          <p class="step-lead">La referencia común es de 3 a 6 meses de gastos cubiertos con ahorro líquido.</p>
+          <div class="field-grid two-columns">
+            <label class="field-card"><span>Gastos mensuales aproximados</span><div class="money-input"><b>$</b><input type="number" inputmode="decimal" min="0" id="monthlyExpenses" placeholder="25,000"></div><small>Puedes usar la misma cifra de tu Control Financiero.</small></label>
+            <label class="field-card"><span>Ahorro líquido disponible</span><div class="money-input"><b>$</b><input type="number" inputmode="decimal" min="0" id="liquidSavings" placeholder="60,000"></div><small>Dinero al que podrías acceder de inmediato.</small></label>
+          </div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="3">
+          <span class="step-kicker">Seguros</span>
+          <h2>¿Qué tienes hoy para proteger tu vida y tu salud?</h2>
+          <div class="choice-grid compact" data-choice-group="hasLifeInsurance">
+            <button class="choice-card" type="button" data-value="yes"><span>Sí, tengo seguro de vida</span></button>
+            <button class="choice-card" type="button" data-value="no"><span>No cuento con uno</span></button>
+          </div>
+          <div class="field-grid two-columns" style="margin-top:14px">
+            <label class="field-card"><span>Cobertura actual de tu seguro de vida</span><div class="money-input"><b>$</b><input type="number" min="0" id="lifeInsuranceAmount" placeholder="0"></div><small>Déjalo en cero si no cuentas con uno.</small></label>
+          </div>
+          <p class="step-lead" style="margin:20px 0 10px;font-weight:700;color:#e9e3f7">¿Tienes seguro de gastos médicos mayores?</p>
+          <div class="choice-grid compact" data-choice-group="hasGMM">
+            <button class="choice-card" type="button" data-value="yes"><span>Sí</span></button>
+            <button class="choice-card" type="button" data-value="no"><span>No</span></button>
+          </div>
+          <p class="step-lead" style="margin:20px 0 10px;font-weight:700;color:#e9e3f7">¿Tienes seguro de incapacidad o invalidez?</p>
+          <div class="choice-grid compact" data-choice-group="hasDisability">
+            <button class="choice-card" type="button" data-value="yes"><span>Sí</span></button>
+            <button class="choice-card" type="button" data-value="no"><span>No</span></button>
+          </div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="4">
+          <span class="step-kicker">Ingresos</span>
+          <h2>¿Qué pasaría con tu ingreso si no pudieras trabajar?</h2>
+          <div class="field-grid two-columns">
+            <label class="field-card"><span>Tu ingreso mensual</span><div class="money-input"><b>$</b><input type="number" min="0" id="monthlyIncome" placeholder="30,000"></div><small>Usa un promedio si cambia cada mes.</small></label>
+            <label class="field-card"><span>Dependientes económicos</span><input type="number" min="0" id="dependents" placeholder="2"><small>Personas que dependen de tu ingreso.</small></label>
+          </div>
+          <p class="step-lead" style="margin:20px 0 10px;font-weight:700;color:#e9e3f7">Si no pudieras trabajar de 3 a 6 meses, tu ingreso estaría:</p>
+          <div class="choice-grid compact" data-choice-group="incomeProtection">
+            <button class="choice-card" type="button" data-value="covered"><span>Cubierto</span><small>Tengo seguro de incapacidad u otro respaldo.</small></button>
+            <button class="choice-card" type="button" data-value="partial"><span>Parcialmente cubierto</span><small>Tendría algo, pero no completo.</small></button>
+            <button class="choice-card" type="button" data-value="no"><span>Sin cobertura</span><small>No tendría cómo cubrirlo.</small></button>
+          </div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="5">
+          <span class="step-kicker">Vivienda</span>
+          <h2>¿Tu vivienda está protegida?</h2>
+          <div class="choice-grid compact" data-choice-group="hasHomeInsurance">
+            <button class="choice-card" type="button" data-value="yes"><span>Sí, tiene seguro de hogar</span></button>
+            <button class="choice-card" type="button" data-value="no"><span>No tiene</span></button>
+          </div>
+          <div class="field-grid two-columns" style="margin-top:14px">
+            <label class="field-card"><span>Saldo pendiente de hipoteca</span><div class="money-input"><b>$</b><input type="number" min="0" id="mortgageBalance" placeholder="0"></div><small>Déjalo en cero si no tienes o ya está pagada.</small></label>
+          </div>
+          <div class="conditional-block" id="mortgageProtectedField" hidden>
+            <p class="step-lead" style="margin:16px 0 10px;font-weight:700;color:#e9e3f7">¿Esa hipoteca está protegida ante un fallecimiento?</p>
+            <div class="choice-grid compact" data-choice-group="mortgageProtected">
+              <button class="choice-card" type="button" data-value="yes"><span>Sí</span></button>
+              <button class="choice-card" type="button" data-value="no"><span>No / no estoy seguro</span></button>
+            </div>
+          </div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="6">
+          <span class="step-kicker">Educación</span>
+          <h2>¿Tienes hijos o dependientes en edad escolar?</h2>
+          <div class="choice-grid compact" data-choice-group="hasChildren">
+            <button class="choice-card" type="button" data-value="yes"><span>Sí</span></button>
+            <button class="choice-card" type="button" data-value="no"><span>No</span></button>
+          </div>
+          <div class="conditional-block" id="educationFields" hidden>
+            <div class="field-grid two-columns" style="margin-top:14px">
+              <label class="field-card"><span>Fondo estimado que necesitarías</span><div class="money-input"><b>$</b><input type="number" min="0" id="estimatedEducationCost" placeholder="300,000"></div><small>Una referencia aproximada basta.</small></label>
+            </div>
+            <p class="step-lead" style="margin:16px 0 10px;font-weight:700;color:#e9e3f7">¿Ya tienes un fondo o plan para su educación?</p>
+            <div class="choice-grid compact" data-choice-group="hasEducationFund">
+              <button class="choice-card" type="button" data-value="yes"><span>Sí</span></button>
+              <button class="choice-card" type="button" data-value="no"><span>No</span></button>
+            </div>
+          </div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="7">
+          <span class="step-kicker">Deudas</span>
+          <h2>¿Qué deudas tienes hoy?</h2>
+          <div class="field-grid two-columns">
+            <label class="field-card"><span>Deuda total actual</span><div class="money-input"><b>$</b><input type="number" min="0" id="totalDebts" placeholder="0"></div><small>Tarjetas, créditos personales, auto, etc.</small></label>
+          </div>
+          <p class="step-lead" style="margin:20px 0 10px;font-weight:700;color:#e9e3f7">¿Esas deudas están cubiertas ante un imprevisto?</p>
+          <div class="choice-grid compact" data-choice-group="debtsProtected">
+            <button class="choice-card" type="button" data-value="yes"><span>Sí</span></button>
+            <button class="choice-card" type="button" data-value="no"><span>No / no estoy seguro</span></button>
+          </div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Continuar <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="8">
+          <span class="step-kicker">Organización patrimonial</span>
+          <h2>¿Qué tan organizado está tu patrimonio hoy?</h2>
+          <p class="step-lead">Solo 4.7% de los adultos en México tiene testamento — no eres el único si hoy respondes que no.</p>
+          <div class="choice-grid compact" data-choice-group="hasWill">
+            <button class="choice-card" type="button" data-value="yes"><span>Sí, tengo testamento</span></button>
+            <button class="choice-card" type="button" data-value="no"><span>No tengo</span></button>
+          </div>
+          <p class="step-lead" style="margin:20px 0 10px;font-weight:700;color:#e9e3f7">¿Los beneficiarios de tus seguros y AFORE están actualizados?</p>
+          <div class="choice-grid" data-choice-group="beneficiariesUpdated">
+            <button class="choice-card" type="button" data-value="yes"><span>Sí, actualizados</span></button>
+            <button class="choice-card" type="button" data-value="notsure"><span>No estoy seguro</span></button>
+            <button class="choice-card" type="button" data-value="no"><span>No lo he revisado</span></button>
+          </div>
+          <p class="step-lead" style="margin:20px 0 10px;font-weight:700;color:#e9e3f7">¿Alguien de confianza sabe dónde están tus documentos y pólizas?</p>
+          <div class="choice-grid compact" data-choice-group="someoneKnowsDocs">
+            <button class="choice-card" type="button" data-value="yes"><span>Sí</span></button>
+            <button class="choice-card" type="button" data-value="no"><span>No</span></button>
+          </div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>← Atrás</button><button class="primary-action" type="button" data-next>Revisar mis datos <span>→</span></button></div>
+        </div>
+
+        <div class="step" data-step="9">
+          <span class="step-kicker">Antes de calcular</span>
+          <h2>Así construiremos tu primer radar.</h2>
+          <div class="review-grid" id="reviewGrid"></div>
+          <div class="review-note" id="reviewNote"></div>
+          <div class="step-actions"><button class="secondary-action" type="button" data-prev>Corregir información</button><button class="primary-action" type="button" id="calculateButton">Ver mi Radar <span>→</span></button></div>
+        </div>
+
+        <div class="step results-step" data-step="10">
+          <div class="analysis-sequence" id="analysisSequence">
+            <div class="analysis-copy">
+              <span class="step-kicker">Construyendo tu Radar</span>
+              <h2>Estamos conectando las piezas de tu protección.</h2>
+              <p id="analysisText">Organizando tus 7 áreas de protección…</p>
+              <div class="analysis-steps" aria-hidden="true">
+                <div class="analysis-step is-active"><i></i><span>Organizando tus áreas</span></div>
+                <div class="analysis-step"><i></i><span>Calculando fondo y seguros</span></div>
+                <div class="analysis-step"><i></i><span>Comparando contra México</span></div>
+                <div class="analysis-step"><i></i><span>Preparando tu radar</span></div>
+              </div>
+            </div>
+            <div class="radar-processing" aria-hidden="true">
+              <div class="radar-horizon"></div>
+              <svg class="radar-path" viewBox="0 0 560 420" role="img" aria-label="Tu protección se organiza">
+                <path class="radar-path-base" d="M275 402 C145 340 412 304 278 244 C154 188 414 158 282 104 C228 82 254 50 280 22"/>
+                <path class="radar-path-glow" d="M275 402 C145 340 412 304 278 244 C154 188 414 158 282 104 C228 82 254 50 280 22"/>
+              </svg>
+              <div class="radar-core"></div>
+              <div class="resource-orbit resource-orbit--emergency"><span>Emergencia</span></div>
+              <div class="resource-orbit resource-orbit--insurance"><span>Seguros</span></div>
+              <div class="resource-orbit resource-orbit--family"><span>Familia</span></div>
+              <div class="resource-orbit resource-orbit--estate"><span>Patrimonio</span></div>
+            </div>
+          </div>
+
+          <div class="results-content" id="resultsContent" hidden>
+            <span class="step-kicker">Tu Radar está listo</span>
+            <h2><span data-user-first-name>Usuario</span>, así se ve hoy tu protección familiar.</h2>
+
+            <section class="radar-headline">
+              <div>
+                <span class="radar-headline__eyebrow">Respuesta principal</span>
+                <h3 id="radarStatusTitle">Tu Radar está en construcción.</h3>
+                <p id="radarStatusText">Estamos preparando una lectura clara de tu protección.</p>
+              </div>
+              <div class="radar-headline__badge">
+                <strong id="overallScoreBadge">0</strong>
+                <span>puntaje general / 100</span>
+              </div>
+            </section>
+
+            <div class="radar-chart-wrap">
+              <div id="radarChart"></div>
+              <div class="radar-legend" id="radarLegend"></div>
+            </div>
+
+            <section class="result-reveal">
+              <span class="result-label">Tu puntaje general de protección</span>
+              <strong class="hero-result" id="overallScoreHero">0</strong>
+              <p>Sobre 100. No es una calificación moral, es una fotografía para decidir qué revisar primero.</p>
+            </section>
+
+            <section class="discovery-card">
+              <span>Qué significa para ti</span>
+              <h3 id="discoveryTitle">Ya tienes una fotografía clara de tu protección.</h3>
+              <p id="discoveryText"></p>
+            </section>
+
+            <section class="dime-card">
+              <div><span class="step-kicker">Cómo estimamos tu seguro de vida</span><h3>Un cálculo, no una predicción.</h3><p>Sumamos tus deudas, 5 años de reemplazo de ingreso, tu hipoteca y el fondo de educación de tus hijos.</p></div>
+              <div class="dime-card__grid">
+                <div><span>Cobertura sugerida</span><strong id="dimeTargetResult">$0</strong><small>Referencia según tu situación actual.</small></div>
+                <div><span>Cobertura actual</span><strong id="dimeCurrentResult">$0</strong><small>Lo que declaraste tener hoy.</small></div>
+                <div><span>Diferencia</span><strong id="dimeGapResult">$0</strong><small>Brecha entre lo sugerido y lo actual.</small></div>
+                <div><span>Gastos médicos mayores</span><strong id="dimeGmmResult">—</strong><small>Solo 9.7% de México cuenta con uno.</small></div>
+              </div>
+            </section>
+
+            <section class="recommendations-section">
+              <div><span class="step-kicker">Tus puntos ciegos</span><h3>Estas 3 áreas necesitan tu atención primero.</h3><p>No son instrucciones. Son datos para que decidas qué revisar, si quieres.</p></div>
+              <div class="recommendation-list" id="recommendationList"></div>
+            </section>
+
+            <section class="next-actions">
+              <div><span class="step-kicker">Tus siguientes pasos</span><h3>Un radar útil siempre termina con una acción clara.</h3></div>
+              <div class="action-list">
+                <div class="action-item"><span>Esta semana</span><strong>Elige tu punto ciego más urgente y platícalo con Christian.</strong></div>
+                <div class="action-item"><span>Este mes</span><strong>Reúne los documentos que hoy nadie más conoce (pólizas, testamento, cuentas).</strong></div>
+                <div class="action-item"><span>Próxima revisión</span><strong>Vuelve a tu Radar cuando cambien tus ingresos, tu familia o tu patrimonio.</strong></div>
+              </div>
+            </section>
+
+            <section class="radar-closing">
+              <span class="step-kicker">Esto seguirá evolucionando contigo</span>
+              <h3>Nadie puede prever todo. Sí se puede estar mejor preparado.</h3>
+              <p>Este análisis no busca alarmarte, busca mostrarte con claridad dónde estás parado hoy.</p>
+              <p>Cuando cambien tus ingresos, tu familia o tu patrimonio, vuelve y actualiza tu Radar.</p>
+            </section>
+
+            <section class="download-section">
+              <div><span class="step-kicker">Tu información es tuya</span><h3>Llévate tus resultados.</h3><p>Descarga tus datos o guarda este reporte como PDF desde tu navegador.</p></div>
+              <div class="download-actions">
+                <button class="secondary-action" type="button" id="downloadCsv">Descargar mis datos</button>
+                <button class="primary-action" type="button" id="printReport">Guardar reporte en PDF</button>
+              </div>
+            </section>
+
+            <p class="legal-inline">Las cifras usan supuestos simples a partir de tus respuestas y no representan una garantía ni sustituyen asesoría personalizada.</p>
+          </div>
+        </div>
+      </section>
     </section>
   </main>
+
+  <a class="whatsapp-float" id="whatsappLink" href="https://wa.me/526623072573" target="_blank" rel="noopener"><span>◔</span><div><small>Estoy a un mensaje de distancia</small><strong>Revisar mi Radar con Christian</strong></div></a>
+
+  <div class="side-panel" id="sidePanel" hidden>
+    <button class="side-panel__backdrop" type="button" data-close-panel aria-label="Cerrar"></button>
+    <aside class="side-panel__content" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+      <button class="side-panel__close" type="button" data-close-panel>×</button>
+      <span class="step-kicker" id="panelKicker">Información</span>
+      <h2 id="panelTitle">Ayuda</h2>
+      <div id="panelBody"></div>
+    </aside>
+  </div>
+
   <script src="../assets/js/session.js"></script>
+  <script src="../assets/js/protection.js"></script>
 </body>
 </html>
