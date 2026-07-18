@@ -170,6 +170,10 @@ button, input, select, textarea { font: inherit; }
 .about-copy { border-left:1px solid rgba(255,255,255,.09); padding-left:42px; }
 .about-copy blockquote { margin:0 0 16px; font:600 24px/1.45 Manrope; color:#e7f6ff; }
 .about-copy p { color:var(--muted); line-height:1.7; font-size:13px; }
+.about-contact { margin-top: 18px; display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; }
+.about-contact__badge { padding:6px 12px; border-radius:999px; border:1px solid rgba(91,185,255,.22); background:rgba(91,185,255,.07); color:#bcd8ea; font-size:10px; font-weight:700; }
+.about-contact a { color:#83cfff; font-size:12px; font-weight:700; text-decoration:none; }
+.about-contact a:hover { text-decoration:underline; }
 .disclaimer { padding-bottom:90px; }
 .disclaimer-card { display:grid; grid-template-columns:180px 1fr; gap:24px; padding:24px 28px; border-radius:18px; border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.025); }
 .disclaimer-card span { color:#d5e8f5; font-weight:700; font-size:12px; }
@@ -181,6 +185,13 @@ footer { width:min(1180px,calc(100% - 32px)); margin:auto; padding:28px 0 42px; 
 
 .reveal { opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
 .reveal.visible { opacity:1; transform:none; }
+
+.whatsapp-float { position: fixed; right: 22px; bottom: 20px; z-index: 40; display: flex; align-items: center; gap: 11px; padding: 10px 14px 10px 10px; border: 1px solid rgba(102,242,222,.18); border-radius: 16px; background: rgba(7,17,30,.88); backdrop-filter: blur(18px); box-shadow: 0 20px 55px rgba(0,0,0,.3); color: white; text-decoration: none; }
+.whatsapp-float > span { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 11px; background: rgba(102,242,222,.12); color: var(--cyan); }
+.whatsapp-float div { display: grid; }
+.whatsapp-float small { color: #6f8f95; font-size: 8px; }
+.whatsapp-float strong { font-size: 10px; }
+@media(max-width:640px){ .whatsapp-float{ left:12px; right:12px; bottom:10px; justify-content:center; } }
 
 
 @media (max-height: 820px) and (min-width: 981px) {
