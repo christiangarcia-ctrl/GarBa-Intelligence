@@ -43,7 +43,9 @@
     });
     updateConditionals();
     updateIncomeLabel();
-    showStep(Math.min(Number(state.step) || 0, steps.length - 1));
+    // Nunca restaurar directo en el paso de Resultado (requiere recalcular vía el botón);
+    // como máximo, regresar al paso de Revisión.
+    showStep(Math.min(Number(state.step) || 0, steps.length - 2));
   }
 
   function persist() {
