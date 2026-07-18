@@ -219,8 +219,10 @@
     }, 550);
   }
 
+  const AXIS_LABELS = { emergency: 'Emergencia', insurance: 'Seguros', income: 'Ingresos', housing: 'Vivienda', education: 'Educación', debt: 'Deudas', estate: 'Patrimonio' };
+
   function buildRadarSVG(list) {
-    const cx = 170, cy = 170, maxR = 128, n = list.length;
+    const cx = 240, cy = 240, maxR = 125, labelR = maxR + 30, n = list.length;
     const pointAt = (i, frac) => {
       const angle = (-90 + i * (360 / n)) * Math.PI / 180;
       const r = maxR * frac;
@@ -238,14 +240,13 @@
     const dots = dataPts.map(p => `<circle cx="${p[0]}" cy="${p[1]}" r="4.5" fill="#e3dcff" stroke="#1b1130" stroke-width="1.5"/>`).join('');
     const labels = list.map((c, i) => {
       const angle = (-90 + i * (360 / n)) * Math.PI / 180;
-      const lx = cx + (maxR + 42) * Math.cos(angle), ly = cy + (maxR + 42) * Math.sin(angle);
+      const lx = cx + labelR * Math.cos(angle), ly = cy + labelR * Math.sin(angle);
       const cos = Math.cos(angle);
       const anchor = cos > 0.2 ? 'start' : cos < -0.2 ? 'end' : 'middle';
-      const words = c.label.split(' ');
-      const lines = words.length > 1 && words.join(' ').length > 12 ? [words.slice(0, Math.ceil(words.length / 2)).join(' '), words.slice(Math.ceil(words.length / 2)).join(' ')] : [c.label];
-      return lines.map((line, li) => `<text x="${lx}" y="${ly + li * 12 - (lines.length - 1) * 6}" fill="#cdc4e8" font-size="10.5" font-family="Manrope,sans-serif" font-weight="700" text-anchor="${anchor}" dominant-baseline="middle">${line}</text>`).join('');
+      const line = AXIS_LABELS[c.key] || c.label;
+      return `<text x="${lx}" y="${ly}" fill="#cdc4e8" font-size="12" font-family="Manrope,sans-serif" font-weight="700" text-anchor="${anchor}" dominant-baseline="middle">${line}</text>`;
     }).join('');
-    return `<svg viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg">${gridPolys}${axisLines}${dataPoly}${dots}${labels}</svg>`;
+    return `<svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">${gridPolys}${axisLines}${dataPoly}${dots}${labels}</svg>`;
   }
 
   function renderResults() {
